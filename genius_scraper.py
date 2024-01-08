@@ -40,7 +40,7 @@ def random_song_bar(data):
 
 def chosen_song_bar(data, user_input):
     for song in data['songs']:
-        if song['title'] == user_input:
+        if song['title'].lower() == user_input.lower():
             song = song
             break
     title = song['title']
@@ -78,14 +78,16 @@ if __name__ == '__main__':
             #     get_lyrics()
             #     user_input = 'q'
             if user_input.lower() == 'r':
-                bar, title = random_song_bar(data)
+                bar, title, year = random_song_bar(data)
                 print(bar)
+                print(title)
                 print()
             if user_input.lower() == 'c':
                 user_input = input("Please choose a song.\n")
                 print()
-                bar, title = chosen_song_bar(data, user_input)
+                bar, title, year = chosen_song_bar(data, user_input)
                 print(bar)
+                print(title)
                 print()
             break
 
